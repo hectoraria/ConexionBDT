@@ -8,18 +8,14 @@ namespace ConexionBDT.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly ClsConexion _conexion;
+        
+        
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-            _conexion = new ClsConexion();
-        }
+        
 
         public IActionResult Index()
         {
-            ViewBag.estado = "Pulsa el botón para verificar la conexión";  // Mensaje predeterminado
+            
             return View();
         }
 
@@ -28,6 +24,7 @@ namespace ConexionBDT.Controllers
         {
             try
             {
+                ClsConexion _conexion = new ClsConexion();
                 using (SqlConnection conexion = _conexion.getConexion())
                 {
                     if (conexion.State == System.Data.ConnectionState.Open)
@@ -42,7 +39,7 @@ namespace ConexionBDT.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error al intentar conectar con la base de datos: {0}", ex.Message);
+               
                 ViewBag.estado = "Error al intentar conectar con la base de datos";
             }
 
@@ -54,10 +51,6 @@ namespace ConexionBDT.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+       
     }
 }
