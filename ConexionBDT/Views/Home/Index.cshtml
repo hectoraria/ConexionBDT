@@ -1,0 +1,14 @@
+﻿﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <form method="post" action="@Url.Action("Conexion", "Home")">
+        <input type="submit" name="estado" value="Conectar" />
+    </form>
+
+    <p>@ViewBag.estado</p>
+    
+    
+</div> 
