@@ -4,7 +4,7 @@ namespace DALD
 {
     public class ClsConexion
     {
-        public SqlConnection getConexion()
+        public static SqlConnection getConexion()
         {
             SqlConnection miConexion = new SqlConnection();
 
@@ -12,7 +12,7 @@ namespace DALD
 
             {
 
-                miConexion.ConnectionString = "server=campana.database.windows.net;database=HectorBD;uid=usuario;pwd=LaCampana123;trustServerCertificate = true;";
+                miConexion.ConnectionString = "server=campan.database.windows.net;database=HectorBD;uid=usuario;pwd=LaCampana123;trustServerCertificate = true;";
 
                 miConexion.Open();
 
@@ -20,6 +20,7 @@ namespace DALD
             catch (Exception ex) {
                 throw;
             }
+            
 
             return miConexion;
 

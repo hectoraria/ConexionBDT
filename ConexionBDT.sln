@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConexionBDT", "ConexionBDT\ConexionBDT.csproj", "{59E29EA9-F82E-4134-BE0B-844037627C3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConexionBDT", "ConexionBDT\ConexionBDT.csproj", "{59E29EA9-F82E-4134-BE0B-844037627C3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALD", "DALD\DALD.csproj", "{D5EB6016-DBCD-46DF-918C-9EA6953E8FAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DALD", "DALD\DALD.csproj", "{D5EB6016-DBCD-46DF-918C-9EA6953E8FAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConexionBDTMAUI", "ConexionBDTMAUI\ConexionBDTMAUI.csproj", "{FE5AD481-0898-4C6C-9B07-98E188371810}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,12 @@ Global
 		{D5EB6016-DBCD-46DF-918C-9EA6953E8FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5EB6016-DBCD-46DF-918C-9EA6953E8FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5EB6016-DBCD-46DF-918C-9EA6953E8FAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE5AD481-0898-4C6C-9B07-98E188371810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE5AD481-0898-4C6C-9B07-98E188371810}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE5AD481-0898-4C6C-9B07-98E188371810}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FE5AD481-0898-4C6C-9B07-98E188371810}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE5AD481-0898-4C6C-9B07-98E188371810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE5AD481-0898-4C6C-9B07-98E188371810}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

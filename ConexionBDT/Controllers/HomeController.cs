@@ -22,11 +22,13 @@ namespace ConexionBDT.Controllers
         [HttpPost]
         public ActionResult Conexion()
         {
-            try
+
+            SqlConnection conexion = new SqlConnection(); 
+                try
             {
-                ClsConexion _conexion = new ClsConexion();
-                using (SqlConnection conexion = _conexion.getConexion())
-                {
+                conexion = ClsConexion.getConexion();
+
+                
                     if (conexion.State == System.Data.ConnectionState.Open)
                     {
                         ViewBag.estado = "Conexión exitosa";
@@ -35,12 +37,17 @@ namespace ConexionBDT.Controllers
                     {
                         ViewBag.estado = "Error: la conexión no pudo establecerse";
                     }
-                }
+                    
+                
             }
             catch (Exception ex)
             {
                
                 ViewBag.estado = "Error al intentar conectar con la base de datos";
+            }
+            finally
+            {
+                conexion.Close();
             }
 
             return View("Index");
