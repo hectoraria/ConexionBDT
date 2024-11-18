@@ -1,5 +1,6 @@
 ﻿using ConexionBDTMAUI.VM.Utils;
 using DALD;
+using ENT;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace ConexionBDTMAUI.VM
 
         private DelegateCommand conexion;
         private String estado;
+        private List<ClsPersona> listadoPersonas;
 
         #endregion
 
@@ -32,6 +34,9 @@ namespace ConexionBDTMAUI.VM
                 }
         }
 
+        public List<ClsPersona> ListadoPersonas {  get { return listadoPersonas; } }
+
+
         #region Notify
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -44,6 +49,7 @@ namespace ConexionBDTMAUI.VM
         public ConexionVM()
         {
             conexion = new DelegateCommand(Execute, CanExecute);
+            listadoPersonas = ListadosDAL.ListadoCompletoPersonasDAL();
         }
         #endregion
 

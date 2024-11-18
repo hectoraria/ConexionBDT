@@ -12,8 +12,20 @@
         <VerticalStackLayout
             Spacing="5"
             Padding="4">
-            <Button Text="Conexion" Command="{Binding Conexion}"></Button>
-            <Label Text="{Binding Estado}"></Label>
+            <ListView ItemsSource="{Binding ListadoPersonas}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Nombre}" />
+                                <Label Text="{Binding Apellidos}" />
+                                <Label Text="{Binding Telefono}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </VerticalStackLayout>
     </ScrollView>
 

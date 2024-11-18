@@ -64,6 +64,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\DALD\DALD.csproj" />
+	  <ProjectReference Include="..\ENT\ENT.csproj" />
 	</ItemGroup>
 
 </Project>
