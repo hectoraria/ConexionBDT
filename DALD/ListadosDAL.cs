@@ -12,11 +12,14 @@ namespace DALD
         /// <summary>
         /// Devuelve un listado de la base de datos de azure
         /// </summary>
-        public static List<ClsPersona> ListadoCompletoPersonasDAL{
-            List<ClsPersona> personas = new List<ClsPersona>;
+        public static List<ClsPersona> ListadoCompletoPersonasDAL()
+        {
+
+            List<ClsPersona> personas = new List<ClsPersona>();
 
             return personas;
-    }
+        }
 
+    }
 }
 
