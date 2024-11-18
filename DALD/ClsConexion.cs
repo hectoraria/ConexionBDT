@@ -12,7 +12,7 @@ namespace DALD
 
             {
 
-                miConexion.ConnectionString = "server=campan.database.windows.net;database=HectorBD;uid=usuario;pwd=LaCampana123;trustServerCertificate = true;";
+                miConexion.ConnectionString = "server=campana.database.windows.net;database=HectorBD;uid=usuario;pwd=LaCampana123;trustServerCertificate = true;";
 
                 miConexion.Open();
 
