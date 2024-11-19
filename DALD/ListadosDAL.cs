@@ -66,6 +66,51 @@ namespace DALD
             return listadoPersonas;
         }
 
+        /// <summary>
+        /// Elimina una persona de la base de datos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static int eliminarPersona(int id)
+        {
+
+            int numeroFilasAfectadas = 0;
+
+            SqlConnection miConexion = new SqlConnection();
+
+            List<ClsPersona> listadoPersonas = new List<ClsPersona>();
+
+            SqlCommand miComando = new SqlCommand();
+
+            SqlDataReader miLector;
+
+            ClsPersona oPersona;
+
+            try
+
+            {
+
+                miConexion.Open();
+
+                miComando.CommandText = "DELETE FROM Personas WHERE IDPersona=@id";
+
+                miComando.Connection = miConexion;
+
+                numeroFilasAfectadas = miComando.ExecuteNonQuery();
+
+            }
+
+            catch (Exception ex)
+
+            {
+
+                throw ex;
+
+            }
+
+            return numeroFilasAfectadas;
+        }
+
     }
 }
 
