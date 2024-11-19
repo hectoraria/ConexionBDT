@@ -89,8 +89,7 @@ namespace DALD
             try
 
             {
-
-                miConexion.Open();
+                miConexion = ClsConexion.getConexion();
 
                 miComando.CommandText = "DELETE FROM Personas WHERE IDPersona=@id";
 
