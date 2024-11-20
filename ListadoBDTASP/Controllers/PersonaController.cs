@@ -5,28 +5,28 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ListadoBDTASP.Controllers
 {
-    public class HomeController : Controller
+    public class PersonaController : Controller
     {
-        // GET: HomeController
+        // GET: PersonaController
         public ActionResult Index()
         {
-            List<ClsPersona> listadoPersona = ListadosDAL.ListadoCompletoPersonasDAL();
-            return View(listadoPersona);
+            
+            return View();
         }
 
-        // GET: HomeController/Details/5
+        // GET: PersonaController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: HomeController/Create
+        // GET: PersonaController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: HomeController/Create
+        // POST: PersonaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -41,13 +41,13 @@ namespace ListadoBDTASP.Controllers
             }
         }
 
-        // GET: HomeController/Edit/5
+        // GET: PersonaController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: HomeController/Edit/5
+        // POST: PersonaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -62,23 +62,22 @@ namespace ListadoBDTASP.Controllers
             }
         }
 
-        // GET: HomeController/Delete/5
+        // GET: PersonaController/Delete/5
         public ActionResult Delete(int id)
         {
-
-            return View();
+            ClsPersona personaE = ListadosDAL.obtenerPersonaPorID(id);
+            return View(personaE);
         }
 
-        // POST: HomeController/Delete/5
+        // POST: PersonaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            
             try
             {
-                
-                return RedirectToAction(nameof(Index));
+                ListadosDAL.eliminarPersona(id);
+                return RedirectToAction("Index","Home");
             }
             catch
             {
