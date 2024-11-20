@@ -78,13 +78,7 @@ namespace DALD
 
             SqlConnection miConexion = new SqlConnection();
 
-            List<ClsPersona> listadoPersonas = new List<ClsPersona>();
-
             SqlCommand miComando = new SqlCommand();
-
-            SqlDataReader miLector;
-
-            ClsPersona oPersona;
 
             miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
 
@@ -111,6 +105,8 @@ namespace DALD
 
             return numeroFilasAfectadas;
         }
+
+        
 
         /// <summary>
         /// Devuelve un listado de la base de datos de azure
