@@ -65,7 +65,7 @@ namespace ListadoBDTASP.Controllers
         // GET: PersonaController/Delete/5
         public ActionResult Delete(int id)
         {
-            ClsPersona personaE = ListadosDAL.obtenerPersonaPorID(id);
+            ClsPersona personaE = ClsManejadora.obtenerPersonaPorID(id);
             return View(personaE);
         }
 
@@ -76,7 +76,7 @@ namespace ListadoBDTASP.Controllers
         {
             try
             {
-                ListadosDAL.eliminarPersona(id);
+                ClsManejadora.eliminarPersona(id);
                 return RedirectToAction("Index","Home");
             }
             catch

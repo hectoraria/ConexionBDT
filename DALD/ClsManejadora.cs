@@ -9,13 +9,18 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DALD
 {
-    class ClsManejadora
+    public class ClsManejadora
     {
         /// <summary>
         /// Funcion para eliminar una persona de la base de datos
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Devuelve un int que corresponde al numero de filas afectadas</returns>
+        /// <summary>
+        /// Elimina una persona de la base de datos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static int eliminarPersona(int id)
         {
 
@@ -23,13 +28,7 @@ namespace DALD
 
             SqlConnection miConexion = new SqlConnection();
 
-            List<ClsPersona> listadoPersonas = new List<ClsPersona>();
-
             SqlCommand miComando = new SqlCommand();
-
-            SqlDataReader miLector;
-
-            ClsPersona oPersona;
 
             miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
 
@@ -56,6 +55,7 @@ namespace DALD
 
             return numeroFilasAfectadas;
         }
+
         /// <summary>
         /// Funcion para crear un persona y introducirla en la base de datos de azure
         /// </summary>
@@ -163,10 +163,8 @@ namespace DALD
         }
 
         /// <summary>
-        /// Funcion para sacar una persona buscando por la id
+        /// Devuelve un listado de la base de datos de azure
         /// </summary>
-        /// <param name="id">Id de la persona</param>
-        /// <returns>Devuelve la persona encontrada basado en el id</returns>
         public static ClsPersona obtenerPersonaPorID(int id)
         {
 
@@ -207,6 +205,7 @@ namespace DALD
                         }
                         oPersona.Direccion = (string)miLector["Direccion"];
                         oPersona.Telefono = (string)miLector["Telefono"];
+                        oPersona.IDDepartamento = (int)miLector["IDDepartamento"];
 
                     }
                 }
