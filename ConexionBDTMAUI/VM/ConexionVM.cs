@@ -19,9 +19,14 @@ namespace ConexionBDTMAUI.VM
         private DelegateCommand conexion;
         private String estado;
         private List<ClsPersona> listadoPersonas;
+        private ClsPersona personaSelecionada;
 
         #endregion
 
+        public ClsPersona PersonaSelecionada
+        {
+            get { return personaSelecionada; }
+        }
         public DelegateCommand Conexion
         { get { return conexion; } }
 
@@ -93,6 +98,23 @@ namespace ConexionBDTMAUI.VM
                 conexion.Close();
             }
         }
+
+        private async void EditarCommand_Executed()
+        {
+
+            Dictionary<String, object> diccionarioMandar = new Dictionary<String, object>();
+
+            diccionarioMandar.Add("Persona", personaSelecionada);
+
+            await Shell.Current.GoToAsync("DetallePersona", diccionarioMandar);
+
+        }
+
+        private void DeleteCommand_Executed() 
+        {
+            
+        }
+
         #endregion
     }
 }
