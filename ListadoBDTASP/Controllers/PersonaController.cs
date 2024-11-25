@@ -10,14 +10,16 @@ namespace ListadoBDTASP.Controllers
         // GET: PersonaController
         public ActionResult Index()
         {
-            
-            return View();
+
+            List<ClsPersona> listadoPersona = ListadosDAL.ListadoCompletoPersonasDAL();
+            return View(listadoPersona);
         }
 
         // GET: PersonaController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            ClsPersona persona = ClsManejadora.obtenerPersonaPorID(id);
+            return View(persona);
         }
 
         // GET: PersonaController/Create
@@ -29,11 +31,12 @@ namespace ListadoBDTASP.Controllers
         // POST: PersonaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ClsPersona persona)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                ClsManejadora.insertarPersonaDAL(persona);
+                return RedirectToAction("Index", "Persona");
             }
             catch
             {
@@ -44,16 +47,18 @@ namespace ListadoBDTASP.Controllers
         // GET: PersonaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ClsPersona persona = ClsManejadora.obtenerPersonaPorID(id);
+            return View(persona);
         }
 
         // POST: PersonaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(ClsPersona persona)
         {
             try
             {
+                ClsManejadora.editarPersonaDAL(persona);
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -57,106 +57,97 @@ namespace DALD
         }
 
         /// <summary>
-        /// Funcion para crear un persona y introducirla en la base de datos de azure
+        /// Función que inserta una persona en la base de datos de azure
+        /// <br></br>
+        /// Pre: Persona con nombre y apellidos rellenos, los demás campos opcionales
+        /// <br></br>
+        /// Post: Ninguna
         /// </summary>
-        /// <param name="persona"></param>
-        /// <returns>Devuelve un int del numero de las filas afectadas</returns>
-        public static int crearPersona(ClsPersona persona)
+        /// <param name="persona">Objeto persona con los detalles a insertar en la base de datos de azure</param>
+        /// <returns>Número de filas afectadas tras el insert</returns>
+        public static int insertarPersonaDAL(ClsPersona persona)
         {
-
             int numeroFilasAfectadas = 0;
 
-            SqlConnection miConexion = new SqlConnection();
-
-            List<ClsPersona> listadoPersonas = new List<ClsPersona>();
-
+            SqlConnection conexion = new SqlConnection();
             SqlCommand miComando = new SqlCommand();
-
             SqlDataReader miLector;
 
-            ClsPersona oPersona;
-
-            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = persona.Id;
-            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.Nombre;
-            miComando.Parameters.Add("@apellido", System.Data.SqlDbType.VarChar).Value = persona.Apellidos;
-            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = persona.Telefono;
-            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = persona.Direccion;
-            miComando.Parameters.Add("@fechanac", System.Data.SqlDbType.DateTime).Value = persona.FechaNacimiento;
-            miComando.Parameters.Add("@idDepartamento", System.Data.SqlDbType.Int).Value = persona.IDDepartamento;
-            
-
             try
-
             {
-                miConexion = ClsConexion.getConexion();
+                conexion = ClsConexion.getConexion();
 
-                miComando.CommandText = "INSERT INTO Personas (ID, Nombre, Apellido, Telefono, Direccion, FechaNacimiento, IDDepartamento) VALUES (@id, @nombre, @apellido, @telefono, @direccion, @fechanac, @idDepartamento)";
+                miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.Nombre;
+                miComando.Parameters.Add("@apellidos", System.Data.SqlDbType.VarChar).Value = persona.Apellidos;
+                miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = persona.Telefono;
+                miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = persona.Direccion;
+                miComando.Parameters.Add("@foto", System.Data.SqlDbType.VarChar).Value = persona.Foto;
+                miComando.Parameters.Add("@fechaNacimiento", System.Data.SqlDbType.DateTime).Value = persona.FechaNacimiento;
+                miComando.Parameters.Add("@idDepartamento", System.Data.SqlDbType.Int).Value = persona.IDDepartamento;
 
-                miComando.Connection = miConexion;
+                miComando.CommandText = "INSERT INTO Personas " +
+                    "VALUES (@nombre, @apellidos, @telefono, @direccion, @foto, @fechaNacimiento, @idDepartamento)";
+                miComando.Connection = conexion;
 
                 numeroFilasAfectadas = miComando.ExecuteNonQuery();
-
             }
-
             catch (Exception ex)
-
             {
-
-                throw ex;
-
+                throw;
+            }
+            finally
+            {
+                conexion.Close();
             }
 
             return numeroFilasAfectadas;
         }
 
         /// <summary>
-        /// Funcion para modificar un persona y cambiarla en la base de datos de azure
+        /// Función que actualiza los campos de una persona, según su id
+        /// <br></br>
+        /// Pre: Persona con nombre y apellidos rellenos, los demás campos opcionales
+        /// <br></br>
+        /// Post: Ninguna
         /// </summary>
-        /// <param name="persona"></param>
-        /// <returns>Devuelve un int del numero de las filas afectadas</returns>
-        public static int modificaPersona(ClsPersona persona)
+        /// <param name="persona">Objeto persona con los nuevos detalles</param>
+        /// <returns>Número de filas afectadas tras la actualización</returns>
+        public static int editarPersonaDAL(ClsPersona persona)
         {
-
             int numeroFilasAfectadas = 0;
 
-            SqlConnection miConexion = new SqlConnection();
-
-            List<ClsPersona> listadoPersonas = new List<ClsPersona>();
-
+            SqlConnection conexion = new SqlConnection();
             SqlCommand miComando = new SqlCommand();
-
             SqlDataReader miLector;
-
-            ClsPersona oPersona;
-
-            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = persona.Id;
-            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.Nombre;
-            miComando.Parameters.Add("@apellido", System.Data.SqlDbType.VarChar).Value = persona.Apellidos;
-            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = persona.Telefono;
-            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = persona.Direccion;
-            miComando.Parameters.Add("@fechanac", System.Data.SqlDbType.DateTime).Value = persona.FechaNacimiento;
-            miComando.Parameters.Add("@idDepartamento", System.Data.SqlDbType.Int).Value = persona.IDDepartamento;
-
 
             try
             {
-                miConexion = ClsConexion.getConexion();
+                conexion = ClsConexion.getConexion();
 
-                miComando.CommandText = "UPDATE Personas SET Nombre = @nombre, Apellido = @apellido, Telefono = @telefono, Direccion = @direccion, FechaNacimiento = @fechanac, IDDepartamento = @idDepartamento, WHERE ID = @id";
+                miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = persona.Id;
+                miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.Nombre;
+                miComando.Parameters.Add("@apellidos", System.Data.SqlDbType.VarChar).Value = persona.Apellidos;
+                miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = persona.Telefono;
+                miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = persona.Direccion;
+                miComando.Parameters.Add("@foto", System.Data.SqlDbType.VarChar).Value = persona.Foto;
+                miComando.Parameters.Add("@fechaNacimiento", System.Data.SqlDbType.DateTime).Value = persona.FechaNacimiento;
+                miComando.Parameters.Add("@idDepartamento", System.Data.SqlDbType.Int).Value = persona.IDDepartamento;
 
-                miComando.Connection = miConexion;
-
+                miComando.CommandText = "UPDATE Personas " +
+                    "SET Nombre = @nombre, Apellidos = @apellidos, Telefono = @telefono, Direccion = @direccion, " +
+                    "Foto = @foto, FechaNacimiento = @fechaNacimiento, IDDepartamento = @idDepartamento " +
+                    "WHERE ID = @id";
+                miComando.Connection = conexion;
 
                 numeroFilasAfectadas = miComando.ExecuteNonQuery();
-
             }
-
             catch (Exception ex)
-
             {
-
-                throw ex;
-
+                throw;
+            }
+            finally
+            {
+                conexion.Close();
             }
 
             return numeroFilasAfectadas;
