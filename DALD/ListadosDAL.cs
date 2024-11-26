@@ -75,7 +75,7 @@ namespace DALD
         /// Post: Puede devolver una lista vacía si no encuentra nada en la base de datos
         /// </summary>
         /// <returns>Lista de departamentos</returns>
-        public static List<ClsDepartamento> listadoCompletoDepartamentosDAL()
+        public static List<ClsDepartamento> ListadoCompletoDepartamentosDAL()
         {
             List<ClsDepartamento> listado = new List<ClsDepartamento>();
 

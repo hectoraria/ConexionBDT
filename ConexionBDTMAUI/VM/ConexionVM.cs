@@ -2,13 +2,11 @@
 using DALD;
 using ENT;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
+using ConexionBDTMAUI.VM.Models;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+
 
 namespace ConexionBDTMAUI.VM 
 {
@@ -17,15 +15,26 @@ namespace ConexionBDTMAUI.VM
         #region atributos
 
         private DelegateCommand conexion;
-        private String estado;
         private List<ClsPersona> listadoPersonas;
-        private ClsPersona personaSelecionada;
+        private String estado;
+        private ObservableCollection<clsPersonaNombreDept> listadoPersonasNombreDept;
+        private clsPersonaNombreDept personaSeleccionada;
 
         #endregion
 
-        public ClsPersona PersonaSelecionada
+        public clsPersonaNombreDept PersonaSelecionada
         {
-            get { return personaSelecionada; }
+            get { return personaSeleccionada; }
+            set
+            {
+                if (value != null)
+                {
+                    personaSeleccionada = value;
+                    NotifyPropertyChanged("PersonaSeleccionada");
+                    //editarCommand.RaiseCanExecuteChanged();
+                    //borrarCommand.RaiseCanExecuteChanged();
+                }
+            }
         }
         public DelegateCommand Conexion
         { get { return conexion; } }
@@ -39,7 +48,12 @@ namespace ConexionBDTMAUI.VM
                 }
         }
 
-        public List<ClsPersona> ListadoPersonas {  get { return listadoPersonas; } }
+        public ObservableCollection<clsPersonaNombreDept> ListadoPersonasNombreDept
+        {
+            get { return listadoPersonasNombreDept; }
+        }
+
+        
 
 
         #region Notify
@@ -53,8 +67,9 @@ namespace ConexionBDTMAUI.VM
         #region Constructor
         public ConexionVM()
         {
+            cargarListado();
             conexion = new DelegateCommand(Execute, CanExecute);
-            listadoPersonas = ListadosDAL.ListadoCompletoPersonasDAL();
+            
         }
         #endregion
 
@@ -102,9 +117,9 @@ namespace ConexionBDTMAUI.VM
         private async void EditarCommand_Executed()
         {
 
-            Dictionary<String, object> diccionarioMandar = new Dictionary<String, object>();
+            Dictionary<System.String, object> diccionarioMandar = new Dictionary<String, object>();
 
-            diccionarioMandar.Add("Persona", personaSelecionada);
+            diccionarioMandar.Add("Persona", personaSeleccionada);
 
             await Shell.Current.GoToAsync("DetallePersona", diccionarioMandar);
 
@@ -115,6 +130,47 @@ namespace ConexionBDTMAUI.VM
             
         }
 
+        #endregion
+
+
+        #region Metodos
+        /// <summary>
+        /// Función que carga el listado de la base de datos,
+        /// le añade el nombre de departamento a las personas y las 
+        /// añade al listado final.
+        /// <br></br>
+        /// Pre: Ninguna
+        /// <br></br>
+        /// Post: Ninguna
+        /// </summary>
+        public async void cargarListado()
+        {
+            if (listadoPersonas != null && listadoPersonas.Count > 0)
+            {
+                listadoPersonas.Clear();
+            }
+
+            try
+            {
+                listadoPersonas = ListadosDAL.ListadoCompletoPersonasDAL();
+                listadoPersonasNombreDept = new ObservableCollection<clsPersonaNombreDept>();
+
+                // se crea una lista de departamentos
+                List<ClsDepartamento> listaDept = ListadosDAL.ListadoCompletoDepartamentosDAL();
+
+                foreach (ClsPersona persona in listadoPersonas)
+                {
+                    clsPersonaNombreDept personaNombreDept = new clsPersonaNombreDept(persona, listaDept);
+                    listadoPersonasNombreDept.Add(personaNombreDept);
+                }
+
+                NotifyPropertyChanged("ListadoPersonasNombreDept");
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
         #endregion
     }
 }

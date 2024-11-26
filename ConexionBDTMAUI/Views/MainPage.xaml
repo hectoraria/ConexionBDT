@@ -13,23 +13,47 @@
             Spacing="5"
             Padding="4">
             <Button></Button>
-            <ListView ItemsSource="{Binding ListadoPersonas}" SelectedItem="{Binding PersonaSelecionada}">
+            
+            <ListView ItemsSource="{Binding ListadoPersonasNombreDept}"
+                          SelectedItem="{Binding PersonaSelecionada}"
+                          HasUnevenRows="True"
+                          SeparatorVisibility="None"
+                          Margin="5"
+                          BackgroundColor="#F5F5F5">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <HorizontalStackLayout Spacing="10">
-                                <Image Source="{Binding Foto}" WidthRequest="100" HeightRequest="100"></Image>
-                                <VerticalStackLayout Padding="10">
-                                <Label Text="{Binding Nombre}" />
-                                <Label Text="{Binding Apellidos}" />
-                                <Label Text="{Binding Telefono}" />
-                            </VerticalStackLayout>
-                            </HorizontalStackLayout>
+                            <Frame Padding="10"
+                                       Margin="5"
+                                       BorderColor="#E0E0E0"
+                                       BackgroundColor="White">
+                                <HorizontalStackLayout Spacing="10">
+                                    <Image Source="{Binding Foto}" 
+                                               WidthRequest="70" 
+                                               HeightRequest="70"
+                                               Aspect="AspectFill"
+                                               BackgroundColor="#E0E0E0"/>
+                                    <VerticalStackLayout>
+                                        <Label TextColor="#212121"
+                                                   FontSize="Medium"
+                                                   FontAttributes="Bold">
+                                            <Label.Text>
+                                                <MultiBinding StringFormat="{}{0} {1}">
+                                                    <Binding Path="Nombre"/>
+                                                    <Binding Path="Apellidos"/>
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
+                                        <Label Text="{Binding NombreDept}" 
+                                                   FontSize="Small" 
+                                                   TextColor="#757575"/>
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
         </VerticalStackLayout>
     </ScrollView>
 
