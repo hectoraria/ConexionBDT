@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ConexionBDTMAUI.VM"
-             x:Class="ConexionBDTMAUI.MainPage">
+             x:Class="ConexionBDTMAUI.Views.MainPage">
 
     <ContentPage.BindingContext>
         <vm:ConexionVM></vm:ConexionVM>
@@ -12,15 +12,19 @@
         <VerticalStackLayout
             Spacing="5"
             Padding="4">
-            <ListView ItemsSource="{Binding ListadoPersonas}">
+            <Button></Button>
+            <ListView ItemsSource="{Binding ListadoPersonas}" SelectedItem="{Binding PersonaSelecionada}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
+                            <HorizontalStackLayout Spacing="10">
+                                <Image Source="{Binding Foto}" WidthRequest="100" HeightRequest="100"></Image>
+                                <VerticalStackLayout Padding="10">
                                 <Label Text="{Binding Nombre}" />
                                 <Label Text="{Binding Apellidos}" />
                                 <Label Text="{Binding Telefono}" />
-                            </StackLayout>
+                            </VerticalStackLayout>
+                            </HorizontalStackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -1,4 +1,4 @@
-﻿namespace ConexionBDTMAUI
+﻿namespace ConexionBDTMAUI.Views
 {
     public partial class MainPage : ContentPage
     {

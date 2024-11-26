@@ -5,11 +5,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ConexionBDTMAUI"
     Shell.FlyoutBehavior="Disabled"
-    Title="ConexionBDTMAUI">
+    Title="ConexionBDTMAUI"
+    xmlns:views="clr-namespace:ConexionBDTMAUI.Views">
+
+
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="ListaPersonas"
+        ContentTemplate="{DataTemplate views:MainPage}"
+         />
+    <ShellContent Title="Editar Persona" Route="editarPersona" ContentTemplate="{DataTemplate views:EditarPersona}"/>
 
 </Shell>
