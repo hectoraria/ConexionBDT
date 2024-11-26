@@ -22,7 +22,7 @@ namespace ConexionBDTMAUI.VM
 
         #endregion
 
-        public clsPersonaNombreDept PersonaSelecionada
+        public clsPersonaNombreDept PersonaSeleccionada
         {
             get { return personaSeleccionada; }
             set
@@ -30,9 +30,8 @@ namespace ConexionBDTMAUI.VM
                 if (value != null)
                 {
                     personaSeleccionada = value;
-                    NotifyPropertyChanged("PersonaSeleccionada");
-                    //editarCommand.RaiseCanExecuteChanged();
-                    //borrarCommand.RaiseCanExecuteChanged();
+                    NotifyPropertyChanged(nameof(PersonaSeleccionada));
+                    Console.WriteLine($"Persona seleccionada: {personaSeleccionada?.Nombre}");
                 }
             }
         }
