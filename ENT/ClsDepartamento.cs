@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ENT
 {
-    class ClsDepartamento
+    public class ClsDepartamento
     {
         #region Propiedades
         public int Id { get; set; }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ENT.ClsPersona>
+﻿@model IEnumerable<ListadoBDTASP.Models.ClsPersonaConNombreDepartamento>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,11 +7,14 @@
 <h1>Index</h1>
 
 <p>
-    @Html.ActionLink("Create", "Create","Persona")
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreDept)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Id)
             </th>
@@ -34,44 +37,48 @@
                 @Html.DisplayNameFor(model => model.FechaNacimiento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IDDepartamento)
+                Departamento
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellidos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Foto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaNacimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDDepartamento)
-            </td>
-            <td>
-                   @Html.ActionLink("Edit", "Edit","Persona", new { id = item.Id }) |
-                   @Html.ActionLink("Details", "Details","Persona", new { id = item.Id }) |
-                   @Html.ActionLink("Delete", "Delete", "Persona", new { id = item.Id })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreDept)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellidos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Foto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreDept)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit","Persona", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details","Persona", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete","persona", new { id = item.Id })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

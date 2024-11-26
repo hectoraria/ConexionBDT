@@ -153,6 +153,8 @@ namespace DALD
             return numeroFilasAfectadas;
         }
 
+
+
         /// <summary>
         /// Devuelve un listado de la base de datos de azure
         /// </summary>
@@ -213,6 +215,59 @@ namespace DALD
             }
 
             return oPersona;
+        }
+        /// <summary>
+        /// Devuelve un listado de la base de datos de azure
+        /// </summary>
+        public static ClsDepartamento obtenerDepartamentoPorID(int id)
+        {
+
+
+            SqlConnection miConexion = new SqlConnection();
+
+            SqlCommand miComando = new SqlCommand();
+
+            SqlDataReader miLector;
+
+            ClsDepartamento oDept = new ClsDepartamento();
+
+            ClsPersona oPersona = null;
+
+
+
+            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+
+            try
+            {
+                miConexion = ClsConexion.getConexion();
+                miComando.CommandText = "SELECT * FROM departamentos where id=@id";
+                miComando.Connection = miConexion;
+                miLector = miComando.ExecuteReader();
+
+                if (miLector.HasRows)
+                {
+                    while (miLector.Read())
+                    {
+                        oDept = new ClsDepartamento();
+
+                        oDept.Id = (int)miLector["ID"];
+
+                        oDept.Nombre = (string)miLector["Nombre"];
+                    }
+                }
+                miLector.Close();
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                miConexion.Close();
+            }
+
+            return oDept;
         }
     }
 }

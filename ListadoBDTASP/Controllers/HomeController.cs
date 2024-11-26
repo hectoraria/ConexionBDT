@@ -1,5 +1,6 @@
 ﻿using DALD;
 using ENT;
+using ListadoBDTASP.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,8 +11,8 @@ namespace ListadoBDTASP.Controllers
         // GET: HomeController
         public ActionResult Index()
         {
-            List<ClsPersona> listadoPersona = ListadosDAL.ListadoCompletoPersonasDAL();
-            return View(listadoPersona);
+            ClsListadoPersonasConNombreDept personas = new ClsListadoPersonasConNombreDept();
+            return View(personas.ListadoPersonasNombreDept);
         }
 
         // GET: HomeController/Details/5

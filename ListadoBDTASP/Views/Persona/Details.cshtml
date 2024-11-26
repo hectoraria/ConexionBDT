@@ -1,4 +1,4 @@
-﻿@model ENT.ClsPersona
+﻿@model ListadoBDTASP.Models.ClsPersonaConNombreDepartamento
 
 @{
     ViewData["Title"] = "Details";
@@ -53,10 +53,10 @@
             @Html.DisplayFor(model => model.FechaNacimiento)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IDDepartamento)
+            Departamento
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IDDepartamento)
+            @Html.DisplayFor(model => model.NombreDept)
         </dd>
     </dl>
 </div>
