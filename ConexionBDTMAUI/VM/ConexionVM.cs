@@ -15,6 +15,7 @@ namespace ConexionBDTMAUI.VM
         #region atributos
 
         private DelegateCommand conexion;
+        private DelegateCommand editar;
         private List<ClsPersona> listadoPersonas;
         private String estado;
         private ObservableCollection<clsPersonaNombreDept> listadoPersonasNombreDept;
@@ -31,7 +32,7 @@ namespace ConexionBDTMAUI.VM
                 {
                     personaSeleccionada = value;
                     NotifyPropertyChanged(nameof(PersonaSeleccionada));
-                    Console.WriteLine($"Persona seleccionada: {personaSeleccionada?.Nombre}");
+                    editar.RaiseCanExecuteChanged();
                 }
             }
         }
@@ -52,6 +53,8 @@ namespace ConexionBDTMAUI.VM
             get { return listadoPersonasNombreDept; }
         }
 
+        public DelegateCommand Editar
+        { get { return editar; } }
         
 
 
@@ -68,7 +71,9 @@ namespace ConexionBDTMAUI.VM
         {
             cargarListado();
             conexion = new DelegateCommand(Execute, CanExecute);
-            
+            editar = new DelegateCommand(EditarCommandExecuted, editarCommandCanExecute);
+
+
         }
         #endregion
 
@@ -113,15 +118,40 @@ namespace ConexionBDTMAUI.VM
             }
         }
 
-        private async void EditarCommand_Executed()
+        private async void EditarCommandExecuted()
         {
 
-            Dictionary<System.String, object> diccionarioMandar = new Dictionary<String, object>();
+            if (personaSeleccionada != null)
+            {
+                ClsPersona persona = ClsManejadora.obtenerPersonaPorID(personaSeleccionada.Id);
+                var queryParams = new Dictionary<string, object>
+                {
+                    { "persona", persona}
+                };
 
-            diccionarioMandar.Add("Persona", personaSeleccionada);
+                await Shell.Current.GoToAsync("///editarPersona", queryParams);
+            }
 
-            await Shell.Current.GoToAsync("DetallePersona", diccionarioMandar);
+        }
 
+        /// <summary>
+        /// Función que comprueba cuando puede mostrarse el command
+        /// <br></br>
+        /// Pre: Ninguna
+        /// <br></br>
+        /// Post: Ninguna
+        /// </summary>
+        /// <returns>Devuelve si puede mostrarse o no</returns>
+        public bool editarCommandCanExecute()
+        {
+            bool canExecute = false;
+
+            if (personaSeleccionada != null)
+            {
+                canExecute = true;
+            }
+
+            return canExecute;
         }
 
         private void DeleteCommand_Executed() 

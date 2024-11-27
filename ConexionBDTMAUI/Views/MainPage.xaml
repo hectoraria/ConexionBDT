@@ -11,6 +11,7 @@
     <!-- Reemplazar Grid por AbsoluteLayout para organizar correctamente -->
     <AbsoluteLayout>
         <!-- ScrollView para el contenido desplazable -->
+       
         <ScrollView 
             AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
             AbsoluteLayout.LayoutFlags="All">
@@ -59,13 +60,14 @@
 
         <!-- Botones superpuestos -->
         <Button Text="✏️"
+                Command="{Binding Editar }"
                 BackgroundColor="Purple"
                 TextColor="White"
                 FontSize="Medium"
                 CornerRadius="25"
                 WidthRequest="50"
                 HeightRequest="50"
-                AbsoluteLayout.LayoutBounds="0.85, 0.8, 50, 50"
+                AbsoluteLayout.LayoutBounds="0.99, 0.8, 50, 50"
                 AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Button Text="+" 
@@ -75,7 +77,7 @@
                 CornerRadius="25"
                 WidthRequest="50"
                 HeightRequest="50"
-                AbsoluteLayout.LayoutBounds="0.85, 0.9, 50, 50"
+                AbsoluteLayout.LayoutBounds="0.99, 0.9, 50, 50"
                 AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Button Text="-"
@@ -85,7 +87,7 @@
                 CornerRadius="25"
                 WidthRequest="50"
                 HeightRequest="50"
-                AbsoluteLayout.LayoutBounds="0.85, 0.7, 50, 50"
+                AbsoluteLayout.LayoutBounds="0.99, 0.7, 50, 50"
                 AbsoluteLayout.LayoutFlags="PositionProportional"/>
     </AbsoluteLayout>
 </ContentPage>

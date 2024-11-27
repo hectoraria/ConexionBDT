@@ -10,7 +10,7 @@
 
 
 
-    <ShellContent Title="ListaPersonas" ContentTemplate="{DataTemplate views:MainPage}"
+    <ShellContent Title="ListaPersonas" Route="mainPage" ContentTemplate="{DataTemplate views:MainPage}"
          />
     <ShellContent Title="Editar Persona" Route="editarPersona" ContentTemplate="{DataTemplate views:EditarPersona}"/>
 
