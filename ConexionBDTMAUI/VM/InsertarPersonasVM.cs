@@ -166,13 +166,14 @@ namespace ConexionBDTMAUI.VM
         /// <br></br>
         /// Post: Ninguna
         /// </summary>
-        public void insertarCommandExecuted()
+        public async void insertarCommandExecuted()
         {
             
                 ClsPersona persona = new ClsPersona(1, nombre, apellidos, telefono, direccion, foto, fechaNac, departamentoSeleccionado.Id);
                 ClsManejadora.insertarPersonaDAL(persona);
-            
-           
+                await Shell.Current.GoToAsync("///mainPage");
+
+
 
         }
 
