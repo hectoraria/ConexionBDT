@@ -71,6 +71,7 @@
                 AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Button Text="+" 
+                Command="{Binding Insertar}"
                 BackgroundColor="Green"
                 TextColor="White"
                 FontSize="Large"

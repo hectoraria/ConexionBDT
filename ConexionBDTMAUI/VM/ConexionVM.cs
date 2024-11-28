@@ -16,6 +16,7 @@ namespace ConexionBDTMAUI.VM
 
         private DelegateCommand conexion;
         private DelegateCommand editar;
+        private DelegateCommand insertar;
         private List<ClsPersona> listadoPersonas;
         private String estado;
         private ObservableCollection<clsPersonaNombreDept> listadoPersonasNombreDept;
@@ -35,6 +36,10 @@ namespace ConexionBDTMAUI.VM
                     editar.RaiseCanExecuteChanged();
                 }
             }
+        }
+        public DelegateCommand Insertar
+        {
+            get { return insertar; }
         }
         public DelegateCommand Conexion
         { get { return conexion; } }
@@ -72,6 +77,7 @@ namespace ConexionBDTMAUI.VM
             cargarListado();
             conexion = new DelegateCommand(Execute, CanExecute);
             editar = new DelegateCommand(EditarCommandExecuted, editarCommandCanExecute);
+            insertar = new DelegateCommand(InsertarCommandExecuted);
 
 
         }
@@ -134,6 +140,10 @@ namespace ConexionBDTMAUI.VM
 
         }
 
+        private async void InsertarCommandExecuted()
+        {
+            await Shell.Current.GoToAsync("///insertarPersona");
+        }
         /// <summary>
         /// Función que comprueba cuando puede mostrarse el command
         /// <br></br>

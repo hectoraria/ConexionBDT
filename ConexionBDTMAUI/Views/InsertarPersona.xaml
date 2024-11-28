@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ConexionBDTMAUI.Views.InsertarPersona"
+             Title="InsertarPersona"
+             xmlns:vm="clr-namespace:ConexionBDTMAUI.VM">
+    <ContentPage.BindingContext>
+        <vm:InsertarPersonasVM></vm:InsertarPersonasVM>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <!-- Campo Nombre -->
+            <Label Text="Nombre" FontSize="18" />
+            <Entry Placeholder="Introduce el nombre" Text="{Binding Nombre}" />
+
+            <!-- Campo Apellidos -->
+            <Label Text="Apellidos" FontSize="18" />
+            <Entry Placeholder="Introduce los apellidos" Text="{Binding Apellidos}" />
+
+            <!-- Campo Telefono -->
+            <Label Text="Telefono" FontSize="18" />
+            <Entry Placeholder="Introduce tu teléfono" Text="{Binding Telefono}" />
+
+            <!-- Campo Direccion -->
+            <Label Text="Dirección" FontSize="18" />
+            <Entry Placeholder="Introduce tu dirección" Text="{Binding Direccion}" />
+
+            <!-- Campo Foto -->
+            <Label Text="Foto" FontSize="18" />
+            <Entry Placeholder="Introduce tu foto" Text="{Binding Foto}" />
+
+            <!-- Campo Fecha Nacimiento -->
+            <Label Text="Telefono" FontSize="18" />
+            <DatePicker
+                   Date="{Binding FechaNac, Mode=TwoWay}" />
+
+            <!-- Campo IdDepartamento -->
+            <Label Text="Departamento" FontSize="18" />
+            <Picker 
+                    Title="Selecciona un departamento"
+                    ItemsSource="{Binding Departamentos}"
+                    SelectedItem="{Binding DepartamentoSeleccionado}"
+                    ItemDisplayBinding="{Binding Nombre}" />
+
+            <!-- Botón Guardar -->
+            <Button 
+                    Text="Guardar"
+                    Command="{Binding InsertarCommand}"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White" />
+
+            <!-- Botón Volver listado -->
+            <Button 
+                    Text="Volver al listado"
+                    Command="{Binding VolverCommand}"
+                    BackgroundColor="Purple"
+                    TextColor="White" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

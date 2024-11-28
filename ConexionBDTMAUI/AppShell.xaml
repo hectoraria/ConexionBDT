@@ -14,4 +14,6 @@
          />
     <ShellContent Title="Editar Persona" Route="editarPersona" ContentTemplate="{DataTemplate views:EditarPersona}"/>
 
+    <ShellContent Title="Insertar Persona" Route="insertarPersona" ContentTemplate="{DataTemplate views:InsertarPersona}"/>
+
 </Shell>
