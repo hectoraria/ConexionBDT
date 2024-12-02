@@ -82,6 +82,7 @@
                 AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Button Text="-"
+                Command="{Binding Deletear}"
                 BackgroundColor="Red"
                 TextColor="White"
                 FontSize="Medium"

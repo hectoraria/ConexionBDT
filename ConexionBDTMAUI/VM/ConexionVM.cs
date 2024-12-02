@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 
 
+
 namespace ConexionBDTMAUI.VM 
 {
     public class ConexionVM : INotifyPropertyChanged
@@ -17,6 +18,7 @@ namespace ConexionBDTMAUI.VM
         private DelegateCommand conexion;
         private DelegateCommand editar;
         private DelegateCommand insertar;
+        private DelegateCommand deletear;
         private List<ClsPersona> listadoPersonas;
         private String estado;
         private ObservableCollection<clsPersonaNombreDept> listadoPersonasNombreDept;
@@ -34,8 +36,13 @@ namespace ConexionBDTMAUI.VM
                     personaSeleccionada = value;
                     NotifyPropertyChanged(nameof(PersonaSeleccionada));
                     editar.RaiseCanExecuteChanged();
+                    deletear.RaiseCanExecuteChanged();
                 }
             }
+        }
+        public DelegateCommand Deletear
+        {
+            get { return deletear; }
         }
         public DelegateCommand Insertar
         {
@@ -78,6 +85,7 @@ namespace ConexionBDTMAUI.VM
             conexion = new DelegateCommand(Execute, CanExecute);
             editar = new DelegateCommand(EditarCommandExecuted, editarCommandCanExecute);
             insertar = new DelegateCommand(InsertarCommandExecuted);
+            deletear = new DelegateCommand(DeleteCommand_Executed, deleteCommandCanExecute);
 
 
         }
@@ -164,9 +172,50 @@ namespace ConexionBDTMAUI.VM
             return canExecute;
         }
 
-        private void DeleteCommand_Executed() 
+        private async void DeleteCommand_Executed() 
         {
+            // Mostrar un cuadro de confirmación
+            bool isConfirmed = await Application.Current.MainPage.DisplayAlert(
+                "Confirmar Borrado",
+                "¿Estás seguro de que deseas borrar a " + personaSeleccionada.Nombre + "?",
+                "Sí",
+                "No");
+
+            // Si el usuario confirma, ejecutar la lógica de borrado
             
+            if (isConfirmed)
+            {
+                try
+                {
+                    int lineas = ClsManejadora.eliminarPersona(personaSeleccionada.Id);
+                    CancellationTokenSource token = new CancellationTokenSource();
+                    
+                    personaSeleccionada = null;
+                    editar.RaiseCanExecuteChanged();
+                    deletear.RaiseCanExecuteChanged();
+                    
+                }
+                catch (Exception ex)
+                {
+
+                }
+               
+                
+            }
+                
+            
+        }
+
+        private bool deleteCommandCanExecute()
+        {
+            bool canExecute = false;
+
+            if (personaSeleccionada != null)
+            {
+                canExecute = true;
+            }
+
+            return canExecute;
         }
 
         #endregion

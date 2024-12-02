@@ -30,7 +30,7 @@
             <Entry Placeholder="Introduce tu foto" Text="{Binding Foto}" />
 
             <!-- Campo Fecha Nacimiento -->
-            <Label Text="Telefono" FontSize="18" />
+            <Label Text="FechaNacimiento" FontSize="18" />
             <DatePicker
                    Date="{Binding FechaNac, Mode=TwoWay}" />
 
