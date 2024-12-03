@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConexionBDT", "ConexionBDT\ConexionBDT.csproj", "{59E29EA9-F82E-4134-BE0B-844037627C3D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DALD", "DALD\DALD.csproj", "{D5EB6016-DBCD-46DF-918C-9EA6953E8FAE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConexionBDTMAUI", "ConexionBDTMAUI\ConexionBDTMAUI.csproj", "{FE5AD481-0898-4C6C-9B07-98E188371810}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ENT", "ENT\ENT.csproj", "{85C196D1-E2FB-4009-852D-8DA035914706}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListadoBDTASP", "ListadoBDTASP\ListadoBDTASP.csproj", "{2284D8B1-321C-4512-855A-1E78720596D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListadoBDTASP", "ListadoBDTASP\ListadoBDTASP.csproj", "{2284D8B1-321C-4512-855A-1E78720596D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{59E29EA9-F82E-4134-BE0B-844037627C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59E29EA9-F82E-4134-BE0B-844037627C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59E29EA9-F82E-4134-BE0B-844037627C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59E29EA9-F82E-4134-BE0B-844037627C3D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D5EB6016-DBCD-46DF-918C-9EA6953E8FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D5EB6016-DBCD-46DF-918C-9EA6953E8FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5EB6016-DBCD-46DF-918C-9EA6953E8FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -156,8 +156,10 @@ namespace DALD
 
 
         /// <summary>
-        /// Devuelve un listado de la base de datos de azure
+        /// Devuelve una persona de la base de datos obtenida por el id 
         /// </summary>
+        /// <param name="id">Id de la persona que quieres obtener</param>
+        /// <returns>Devolvera la persona encontrada por su id</returns>
         public static ClsPersona obtenerPersonaPorID(int id)
         {
 
@@ -216,9 +218,12 @@ namespace DALD
 
             return oPersona;
         }
+
         /// <summary>
-        /// Devuelve un listado de la base de datos de azure
+        /// Devuelve un departamento de la base de datos obtenida por el id 
         /// </summary>
+        /// <param name="id">Id del departamento que quieres obtener</param>
+        /// <returns>Devolvera el departamento encontrada por su id</returns>
         public static ClsDepartamento obtenerDepartamentoPorID(int id)
         {
 

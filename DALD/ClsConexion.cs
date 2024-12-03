@@ -4,6 +4,11 @@ namespace DALD
 {
     public class ClsConexion
     {
+
+        /// <summary>
+        /// Funcion para conectarte a la base de datos de azure
+        /// </summary>
+        /// <returns>Devuelve la conexion abierta</returns>
         public static SqlConnection getConexion()
         {
             SqlConnection miConexion = new SqlConnection();

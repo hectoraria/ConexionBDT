@@ -25,10 +25,10 @@
                     
                     />
 
-            <Button Text="Vovler"
-                    Command="{Binding VolverCommand}" HeightRequest="150" WidthRequest="150"></Button>
+            <Button Text="Volver"
+                    Command="{Binding VolverCommand}" HeightRequest="75" WidthRequest="100"></Button>
             <Button Text="Guardar"
-                    Command="{Binding GuardarCommand}" HeightRequest="150" WidthRequest="150"></Button>
+                    Command="{Binding GuardarCommand}" HeightRequest="75" WidthRequest="100"></Button>
 
 
         </VerticalStackLayout>

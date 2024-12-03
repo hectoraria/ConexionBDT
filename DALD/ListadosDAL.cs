@@ -11,8 +11,9 @@ namespace DALD
     public class ListadosDAL
     {
         /// <summary>
-        /// Devuelve un listado de la base de datos de azure
+        /// Funcion para devolver un listado de todas las personas de la base de datos
         /// </summary>
+        /// <returns>Devolvera una lista completa de Personas</returns>
         public static List<ClsPersona> ListadoCompletoPersonasDAL()
         {
 

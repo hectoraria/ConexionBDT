@@ -21,7 +21,7 @@ namespace ListadoBDTASP.Models
         public ClsListadoPersonasConNombreDept()
         {
             listadoPersonas = ListadosDAL.ListadoCompletoPersonasDAL();
-            List<ClsDepartamento> departamentos = ListadosDAL.listadoCompletoDepartamentosDAL();
+            List<ClsDepartamento> departamentos = ListadosDAL.ListadoCompletoDepartamentosDAL();
 
             listadoPersonasNombreDept = new List<ClsPersonaConNombreDepartamento>();
 
